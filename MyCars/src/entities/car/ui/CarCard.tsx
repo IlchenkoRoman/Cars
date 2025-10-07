@@ -29,7 +29,9 @@ export const CarCard: React.FC<CarCardProps> = ({
 
       <div className="car-actions">
         <button 
-          onClick={() => onDelete(car.id)}
+          onClick={(e) => {
+            e.stopPropagation();
+            onDelete(car.id)}}
         >
           Удалить
         </button>

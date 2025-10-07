@@ -4,11 +4,11 @@ import Header from '../shared/ui/header/header';
 
 const App: React.FC = () => {
   return (
-      // <main className="app-main">
-      //   <div className="container">  
+      <main className="app-main">
+        <div className="container">  
           <CarsPage />
-      //   </div>
-      // </main>
+        </div>
+      </main>
   );
 };
 

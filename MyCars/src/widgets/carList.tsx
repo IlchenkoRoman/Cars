@@ -100,82 +100,77 @@ export const CarsList: React.FC<CarsListProps> = ({
   return (
     <div className="cars-container">
       <h1>Управление автомобилями</h1>
-      <div className="cars-header">
-        <div className="sort-controls">
-          <label htmlFor="sort-select" className="sort-label">
-            Сортировка:
-          </label>
-          <select 
-            id="sort-select"
-            value={sortOption}
-            onChange={handleSortChange}
-            className="sort-select"
-          >
-            <option value="none">Без сортировки</option>
-            <option value="price-asc">Цена по возрастанию</option>
-            <option value="price-desc">Цена по убыванию</option>
-            <option value="year-asc">Год по возрастанию</option>
-            <option value="year-desc">Год по убыванию</option>
-          </select>
-        </div>
-
-        <div className="header-actions">
-          <button 
-            onClick={() => setIsAdding(true)} 
-            className="btn btn-primary"
-            disabled={isAdding || editingCar !== null}
-          >
-            Добавить автомобиль
-          </button>
-        </div>
-      </div>
-
-      {isAdding && (
-        <div className="modal-overlay">
-          <div className="modal-content">
-            <AddCarForm
-              onSubmit={handleAddCar}
-              onCancel={handleCancel}
-            />
+      <div className='cars-containers-content'>
+        {isAdding && (
+          <div className="modal-overlay">
+            <div className="modal-content">
+              <AddCarForm
+                onSubmit={handleAddCar}
+                onCancel={handleCancel}
+              />
+            </div>
           </div>
-        </div>
-      )}
-
-      {editingCar && (
-        <div className="modal-overlay">
-          <div className="modal-content">
-            <EditCarForm
-              car={editingCar}
-              onSubmit={handleEditCar}
-              onCancel={handleCancel}
-            />
-          </div>
-        </div>
-      )}
-
-      <div className="cars-grid">
-        {sortedCars.length === 0 ? (
-          <div className="empty-state">
-            <h3>Нет автомобилей</h3>
-            <p>Добавьте первый автомобиль</p>
-          </div>
-        ) : (
-          sortedCars.map(car => (
-            <CarCard
-              key={car.id}
-              car={car}
-              onEdit={setEditingCar}
-              onDelete={handleDeleteCar}
-            />
-          ))
         )}
-      </div>
 
-      {sortedCars.length > 0 && (
-        <div className="cars-footer">
-          <p>Всего автомобилей: {cars.length}</p>
+        {editingCar && (
+          <div className="modal-overlay">
+            <div className="modal-content">
+              <EditCarForm
+                car={editingCar}
+                onSubmit={handleEditCar}
+                onCancel={handleCancel}
+              />
+            </div>
+          </div>
+        )}
+
+        <div className="cars-grid">
+          {sortedCars.length === 0 ? (
+            <div className="empty-state">
+              <h3>Нет автомобилей</h3>
+              <p>Добавьте первый автомобиль</p>
+            </div>
+          ) : (
+            sortedCars.map(car => (
+              <CarCard
+                key={car.id}
+                car={car}
+                onEdit={setEditingCar}
+                onDelete={handleDeleteCar}
+              />
+            ))
+          )}
         </div>
-      )}
+
+        <div className="cars-header">
+          <div className="sort-controls">
+            <label htmlFor="sort-select" className="sort-label">
+              <h3>Сортировка:</h3>
+            </label>
+            <select 
+              id="sort-select"
+              value={sortOption}
+              onChange={handleSortChange}
+              className="sort-select"
+            >
+              <option value="none">Без сортировки</option>
+              <option value="price-asc">Цена по возрастанию</option>
+              <option value="price-desc">Цена по убыванию</option>
+              <option value="year-asc">Год по возрастанию</option>
+              <option value="year-desc">Год по убыванию</option>
+            </select>
+          </div>
+
+          <div className="header-actions">
+            <button 
+              onClick={() => setIsAdding(true)} 
+              disabled={isAdding || editingCar !== null}
+            >
+              Добавить автомобиль
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
