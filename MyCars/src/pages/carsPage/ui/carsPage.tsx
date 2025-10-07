@@ -1,5 +1,5 @@
 import React from 'react';
-import { CarsList } from '../../../widgets/carList';
+import { CarsList } from '../../../widgets/CarList';
 import { useCars } from '../../../features/carsList';
 
 export const CarsPage: React.FC = () => {

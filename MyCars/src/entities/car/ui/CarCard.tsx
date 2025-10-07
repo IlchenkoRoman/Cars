@@ -1,5 +1,7 @@
 import React from 'react';
 import { type Car } from '../api/types';
+import './carCard.css'
+import photo from './images/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg'
 
 interface CarCardProps {
   car: Car;
@@ -13,46 +15,25 @@ export const CarCard: React.FC<CarCardProps> = ({
   onDelete,
 }) => {
   return (
-    <div className="car-card">
-      <div className="car-header">
-        <h3>{car.name} {car.model}</h3>
-        <span className="car-id">ID: {car.id}</span>
-      </div>
-      
+    <div className="car-card" onClick={() => onEdit(car)}>
+        <img className='car-photo' src={photo}/>
+        <div className='car-info'>
+        <div className="car-header">
+            <h3>{car.name} {car.model}, {car.year}</h3>
+            <h3>{car.price.toLocaleString()} ₽</h3>
+        </div>
       <div className="car-details">
-        <div className="car-info">
-          <span className="info-label">Год:</span>
-          <span className="info-value">{car.year}</span>
-        </div>
-        <div className="car-info">
-          <span className="info-label">Цвет:</span>
-          <span className="info-value">{car.color}</span>
-        </div>
-        <div className="car-info">
-          <span className="info-label">Цена:</span>
-          <span className="info-value">${car.price.toLocaleString()}</span>
-        </div>
-        <div className="car-info">
-          <span className="info-label">Координаты:</span>
-          <span className="info-value">
-            {car.latitude}, {car.longitude}
-          </span>
-        </div>
+          <span>Цвет:</span>
+          <span> {car.color}</span>
       </div>
 
       <div className="car-actions">
         <button 
-          onClick={() => onEdit(car)}
-          className="btn btn-outline btn-sm"
-        >
-          Редактировать
-        </button>
-        <button 
           onClick={() => onDelete(car.id)}
-          className="btn btn-danger btn-sm"
         >
           Удалить
         </button>
+      </div>
       </div>
     </div>
   );

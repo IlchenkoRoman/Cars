@@ -4,6 +4,7 @@ import { CarCard } from '../entities/car';
 import { AddCarForm } from '../features/addCar';
 import { EditCarForm } from '../features/editCar';
 import { Loader } from '../shared/ui/loader/loader';
+import "./carList.css"
 
 interface CarsListProps {
   cars: Car[];
@@ -65,8 +66,8 @@ export const CarsList: React.FC<CarsListProps> = ({
 
   return (
     <div className="cars-container">
+      <h1>Управление автомобилями</h1>
       <div className="cars-header">
-        <h1>Управление автомобилями</h1>
         <div className="header-actions">
           <button 
             onClick={() => setIsAdding(true)} 
@@ -75,35 +76,37 @@ export const CarsList: React.FC<CarsListProps> = ({
           >
             Добавить автомобиль
           </button>
-          <button 
-            onClick={onRefresh} 
-            className="btn btn-outline"
-          >
-            Обновить
-          </button>
         </div>
       </div>
 
       {isAdding && (
-        <AddCarForm
-          onSubmit={handleAddCar}
-          onCancel={handleCancel}
-        />
+        <div className="modal-overlay">
+          <div className="modal-content">
+            <AddCarForm
+              onSubmit={handleAddCar}
+              onCancel={handleCancel}
+            />
+          </div>
+        </div>
       )}
 
       {editingCar && (
-        <EditCarForm
-          car={editingCar}
-          onSubmit={handleEditCar}
-          onCancel={handleCancel}
-        />
+        <div className="modal-overlay">
+          <div className="modal-content">
+            <EditCarForm
+              car={editingCar}
+              onSubmit={handleEditCar}
+              onCancel={handleCancel}
+            />
+          </div>
+        </div>
       )}
 
       <div className="cars-grid">
         {cars.length === 0 ? (
           <div className="empty-state">
             <h3>Нет автомобилей</h3>
-            <p>Добавьте первый автомобиль или синхронизируйте с API</p>
+            <p>Добавьте первый автомобиль</p>
           </div>
         ) : (
           cars.map(car => (

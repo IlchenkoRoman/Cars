@@ -1,1 +1,1 @@
-export { EditCarForm } from './ui/editCarForm';
+export { EditCarForm } from './ui/EditCarForm';

@@ -1,0 +1,33 @@
+.car-form > h2{
+    margin-top: 0px;
+    text-align: center;
+}
+
+.form-grid {
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 10px;
+}
+
+.form-group > input {
+    width: auto;
+}
+
+.form-actions {
+    margin-top: auto;
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+.form-actions button {
+    cursor: pointer;
+    color: black;
+    background-color: #f5f5f5;
+}
+
+.form-actions button:hover {
+    border: 1px solid #a0a0a0;
+}

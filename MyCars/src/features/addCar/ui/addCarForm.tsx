@@ -1,5 +1,6 @@
 import React from 'react';
 import type { Car } from '../../../entities/car';
+import './addCarForm.css'
 
 interface AddCarFormProps {
   onSubmit: (carData: Omit<Car, 'id'>) => void;
@@ -41,7 +42,7 @@ export const AddCarForm: React.FC<AddCarFormProps> = ({
       <form onSubmit={handleSubmit}>
         <div className="form-grid">
           <div className="form-group">
-            <label>Марка:</label>
+            <label>Марка: </label>
             <input
               type="text"
               name="name"
@@ -51,7 +52,7 @@ export const AddCarForm: React.FC<AddCarFormProps> = ({
             />
           </div>
           <div className="form-group">
-            <label>Модель:</label>
+            <label>Модель: </label>
             <input
               type="text"
               name="model"
@@ -61,7 +62,7 @@ export const AddCarForm: React.FC<AddCarFormProps> = ({
             />
           </div>
           <div className="form-group">
-            <label>Год:</label>
+            <label>Год: </label>
             <input
               type="number"
               name="year"
@@ -73,7 +74,7 @@ export const AddCarForm: React.FC<AddCarFormProps> = ({
             />
           </div>
           <div className="form-group">
-            <label>Цвет:</label>
+            <label>Цвет: </label>
             <input
               type="text"
               name="color"
@@ -83,45 +84,23 @@ export const AddCarForm: React.FC<AddCarFormProps> = ({
             />
           </div>
           <div className="form-group">
-            <label>Цена ($):</label>
+            <label>Цена (₽): </label>
             <input
               type="number"
               name="price"
               value={formData.price}
               onChange={handleInputChange}
               min="0"
-              step="100"
-              required
-            />
-          </div>
-          <div className="form-group">
-            <label>Широта:</label>
-            <input
-              type="number"
-              name="latitude"
-              value={formData.latitude}
-              onChange={handleInputChange}
-              step="any"
-              required
-            />
-          </div>
-          <div className="form-group">
-            <label>Долгота:</label>
-            <input
-              type="number"
-              name="longitude"
-              value={formData.longitude}
-              onChange={handleInputChange}
-              step="any"
+              step="10000"
               required
             />
           </div>
         </div>
         <div className="form-actions">
-          <button type="submit" className="btn btn-primary">
+          <button type="submit">
             Добавить
           </button>
-          <button type="button" onClick={onCancel} className="btn btn-outline">
+          <button type="button" onClick={onCancel}>
             Отмена
           </button>
         </div>
