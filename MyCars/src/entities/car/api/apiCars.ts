@@ -1,4 +1,4 @@
-import type { Car} from "./types";
+import type { Car} from './types';
 
 const API_URL = 'https://ofc-test-01.tspb.su/test-task/vehicles'
 const STORAGE_KEY = 'cars_data';

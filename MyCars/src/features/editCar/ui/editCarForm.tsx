@@ -32,77 +32,77 @@ export const EditCarForm: React.FC<EditCarFormProps> = ({
     const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
-      [name]: name === 'year' || name === 'price' || name === 'latitude' || name === 'longitude' 
-        ? Number(value) 
+      [name]: name === 'year' || name === 'price' || name === 'latitude' || name === 'longitude'
+        ? Number(value)
         : value
     }));
   };
 
   return (
-    <div className="car-form">
+    <div className='car-form'>
       <h2>Редактирование автомобиля</h2>
       <form onSubmit={handleSubmit}>
-        <div className="form-grid">
-          <div className="form-group">
+        <div className='form-grid'>
+          <div className='form-group'>
             <label>Марка: </label>
             <input
-              type="text"
-              name="name"
+              type='text'
+              name='name'
               value={formData.name}
               onChange={handleInputChange}
               required
             />
           </div>
-          <div className="form-group">
+          <div className='form-group'>
             <label>Модель: </label>
             <input
-              type="text"
-              name="model"
+              type='text'
+              name='model'
               value={formData.model}
               onChange={handleInputChange}
               required
             />
           </div>
-          <div className="form-group">
+          <div className='form-group'>
             <label>Год: </label>
             <input
-              type="number"
-              name="year"
+              type='number'
+              name='year'
               value={formData.year}
               onChange={handleInputChange}
-              min="1900"
+              min='1900'
               max={new Date().getFullYear() + 1}
               disabled
             />
           </div>
-          <div className="form-group">
+          <div className='form-group'>
             <label>Цвет: </label>
             <input
-              type="text"
-              name="color"
+              type='text'
+              name='color'
               value={formData.color}
               onChange={handleInputChange}
               disabled
             />
           </div>
-          <div className="form-group">
+          <div className='form-group'>
             <label>Цена ($): </label>
             <input
-              type="number"
-              name="price"
+              type='number'
+              name='price'
               value={formData.price}
               onChange={handleInputChange}
-              min="0"
-              step="100"
+              min='0'
+              step='100'
               disabled
             />
           </div>
         </div>
-        <div className="form-actions">
-          <button type="submit" className="btn btn-primary">
+        <div className='form-actions'>
+          <button type='submit' className='btn btn-primary'>
             Сохранить
           </button>
-          <button type="button" onClick={onCancel} className="btn btn-outline">
+          <button type='button' onClick={onCancel} className='btn btn-outline'>
             Отмена
           </button>
         </div>

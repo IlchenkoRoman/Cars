@@ -1,62 +1,164 @@
 .car-card {
-    padding: 20px;
-    display: flex;
-    width: 100%;
-    border-bottom: 2px solid #f5f5f5;
+  padding: 20px;
+  display: flex;
+  width: 100%;
+  border-bottom: 2px solid #f5f5f5;
 }
 
 .car-card:hover {
-    border-radius: 16px;
-    background-color:#f5f5f5 ;
+  border-radius: 16px;
+  background-color: #f5f5f5;
 }
 
 .car-card:hover .car-header h3:first-child {
-    color: red;
+  color: red;
 }
 
-.car-photo{
-    width: 272px;
-    height: 204px;
-    border-radius: 6px;
-    margin-right: 40px;
+.car-photo {
+  width: 272px;
+  height: 204px;
+  border-radius: 6px;
+  margin-right: 40px;
 }
 
 .car-info {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
 }
 
 .car-header {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 16px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16px;
 }
 
-.car-header > h3 {
-    margin: 0;
+.car-header>h3 {
+  margin: 0;
 }
 
 .car-actions {
-    margin-top: auto;
-    display: flex;
-    justify-content: flex-end;
-    gap: 8px;
+  margin-top: auto;
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
 }
 
 .car-actions button {
-    cursor: pointer;
-    color: black;
-    background-color: #f5f5f5;
+  cursor: pointer;
+  color: black;
+  background-color: #f5f5f5;
 }
 
 .car-actions button:hover {
-    border: 1px solid #a0a0a0;
+  border: 1px solid #a0a0a0;
 }
 
-.car-card:hover .car-actions button{
-     background-color: white;
+.car-card:hover .car-actions button {
+  background-color: white;
 }
 
+.view-map-link {
+  display: flex;
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+  font-weight: 500;
+  transition: color 0.2s ease;
+  align-items: center;
+}
 
+.view-map-link:hover {
+  color: #878787;
+  text-decoration: underline;
+}
+
+.modal-overlay-map {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.modal-content-map {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  max-width: 800px;
+  width: 100%;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-header-map {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.modal-header-map h2 {
+  margin: 0;
+  color: #2c3e50;
+  font-size: 1.5em;
+}
+
+.modal-close-btn-map {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #6c757d;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+.modal-close-btn-map:hover {
+  background-color: #f8f9fa;
+  color: #495057;
+}
+
+.map-container-map {
+  flex: 1;
+  padding: 0;
+  border-radius: 0 0 12px 12px;
+  overflow: hidden;
+}
+
+.modal-footer-map {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  border-top: 1px solid #e0e0e0;
+  background: #f8f9fa;
+}
+
+.coordinates-info-map {
+  font-family: monospace;
+  color: #6c757d;
+  font-size: 14px;
+}
+
+.modal-overlay-map {
+  animation: fadeIn-map 0.3s ease;
+}
+
+.modal-content-map {
+  animation: slideIn-map 0.3s ease;
+}

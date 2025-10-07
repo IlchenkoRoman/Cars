@@ -5,8 +5,8 @@ export interface Car{
     year: number;
     color: string;
     price: number;
-    latitude?: number;
-    longitude?: number;
+    latitude: number;
+    longitude: number;
 }
 
 export interface ApiError {
