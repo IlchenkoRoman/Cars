@@ -1,0 +1,131 @@
+.main-header {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    flex-wrap: nowrap;
+    background-color: #000;
+}
+
+.header-menu {
+    display: flex;
+    width: 100%;
+}
+
+.header-menu > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.header-logo {
+    margin: 0 20px;
+    width: 91px;
+}
+
+.header-logo > img {
+    width: 91px;
+}
+
+.header-location {
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    gap: 4px;
+}
+
+.header-location > a {
+   color: hsla(0,0%,100%,.8);
+    cursor: pointer;
+}
+
+.header-location > a:hover {
+   color:white
+}
+
+.header-products{
+    height: 50px;
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.header-products > a {
+    color: hsla(0,0%,100%,.8);
+    display: flex;
+    padding: 10px 20px;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+}
+
+.header-products > a:hover {
+    cursor: pointer;
+    text-decoration: none;
+    color: white;
+    background-color: hsla(0,0%,100%,.15);
+    border-radius: 6px;
+}
+
+.heade-announcement-button {
+    background-color: #db001a;
+    border-radius: 6px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    padding: 0 10px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 700;
+    max-width: 240px;
+    min-width: 100px;
+}
+
+.header-authorization > a{
+    color: hsla(0,0%,100%,.8);
+    cursor: pointer;    
+}
+
+.header-authorization > a:hover{
+    color:white;   
+}
+
+.header-authorization,
+.heade-announcement-button .full-text {
+    display: inline;
+}
+
+.header-authorization,
+.heade-announcement-button .short-text {
+    display: none;
+}
+
+@media (max-width: 1442px) {
+  
+    .header-products > a {
+        padding: 10px 10px;
+    }
+    
+    .header-location svg {
+        display: none;
+    }
+
+    .header-authorization .full-text {
+        display: none;
+    }
+    
+    .header-authorization .short-text {
+        display: inline;
+    }
+}
+
+@media (max-width: 1282px) {
+    .heade-announcement-button .full-text {
+        display: none;
+    }
+    
+    .heade-announcement-button .short-text {
+        display: inline;
+    }
+}
