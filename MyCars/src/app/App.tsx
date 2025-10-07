@@ -1,12 +1,12 @@
 import './App.css'
-import CarsList from '../widgets/carList';
+import { CarsPage } from '../pages/carsPage/ui/carsPage';
 import Header from '../shared/ui/footer/header';
 
 const App: React.FC = () => {
   return (
       // <main className="app-main">
       //   <div className="container">
-          <Header />
+          <CarsPage />
       //   </div>
       // </main>
   );

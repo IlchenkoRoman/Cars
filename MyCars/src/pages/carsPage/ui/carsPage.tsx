@@ -1,0 +1,29 @@
+import React from 'react';
+import { CarsList } from '../../../widgets/carList';
+import { useCars } from '../../../features/carsList';
+
+export const CarsPage: React.FC = () => {
+  const { 
+    cars, 
+    isLoading, 
+    error, 
+    refresh,
+    addCar,
+    deleteCar,
+    updateCar,
+  } = useCars();
+
+  return (
+    <div className="cars-page">
+      <CarsList
+        cars={cars}
+        isLoading={isLoading}
+        error={error}
+        onRefresh={refresh}
+        onAddCar={addCar}
+        onDeleteCar={deleteCar}
+        onUpdateCar={updateCar}
+      />
+    </div>
+  );
+};

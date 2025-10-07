@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
-import type { Cars } from '../../api/types'; 
-import { carService } from '../../api/api'
+import type { Car } from '../../../entities/car'; 
+import { carService } from '../../../entities/car';
 
 export const useCars = () => {
-  const [cars, setCars] = useState<Cars[]>([]);
+  const [cars, setCars] = useState<Car[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string>('');
 
@@ -21,7 +21,7 @@ export const useCars = () => {
   };
 
   // Добавить машину
-  const addCar = (carData: Omit<Cars, 'id'>) => {
+  const addCar = (carData: Omit<Car, 'id'>) => {
     try {
       const newCar = carService.addCar(carData);
       setCars(prev => [...prev, newCar]);
@@ -47,7 +47,7 @@ export const useCars = () => {
   };
 
   // Обновить машину
-  const updateCar = (updatedCar: Cars) => {
+  const updateCar = (updatedCar: Car) => {
     try {
       const success = carService.updateCar(updatedCar);
       if (success) {

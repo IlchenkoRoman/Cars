@@ -1,10 +1,10 @@
-import { type Cars} from "./types";
+import type { Car} from "./types";
 
 const API_URL = 'https://ofc-test-01.tspb.su/test-task/vehicles'
 const STORAGE_KEY = 'cars_data';
 
 class CarsService {
-    async getCars(): Promise<Cars[]> {
+    async getCars(): Promise<Car[]> {
         const cachedCars = this.getCarsFromStorage();
         if (cachedCars.length > 0) {
             return cachedCars;
@@ -16,7 +16,7 @@ class CarsService {
             throw new Error(`Ошибка API: ${response.status}`);
         }
 
-        const cars: Cars[] = await response.json();
+        const cars: Car[] = await response.json();
         
         this.saveCarsToStorage(cars);
         
@@ -24,9 +24,9 @@ class CarsService {
     }
 
     // Добавить машину
-    addCar(car: Omit<Cars, 'id'>): Cars {
+    addCar(car: Omit<Car, 'id'>): Car {
         const cars = this.getCarsFromStorage();
-        const newCar: Cars = {
+        const newCar: Car = {
             ...car,
             id: this.generateId(cars)
         };
@@ -50,8 +50,8 @@ class CarsService {
         return true
     }
 
-    // Обновить 
-    updateCar(updatedCar: Cars): boolean {
+    // Редактировать 
+    updateCar(updatedCar: Car): boolean {
         const cars = this.getCarsFromStorage();
         const index = cars.findIndex(car => car.id === updatedCar.id);
         
@@ -66,7 +66,7 @@ class CarsService {
         return true;
     }
 
-    getCarsFromStorage(): Cars[] {
+    getCarsFromStorage(): Car[] {
         try {
             const stored = localStorage.getItem(STORAGE_KEY);
             return stored ? JSON.parse(stored) : [];
@@ -75,11 +75,11 @@ class CarsService {
         }
     }
 
-    saveCarsToStorage(cars: Cars[]): void {
+    saveCarsToStorage(cars: Car[]): void {
         localStorage.setItem(STORAGE_KEY, JSON.stringify(cars));
     }
 
-private generateId(cars: Cars[]): number {
+private generateId(cars: Car[]): number {
     if (cars.length === 0) {
         return 1;
     }
