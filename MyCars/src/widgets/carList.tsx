@@ -16,6 +16,8 @@ interface CarsListProps {
   onUpdateCar: (car: Car) => void;
 }
 
+type SortOption =  'none' | 'price-asc' | 'price-desc' | 'year-asc' | 'year-desc';
+
 export const CarsList: React.FC<CarsListProps> = ({
   cars,
   isLoading,
@@ -27,6 +29,8 @@ export const CarsList: React.FC<CarsListProps> = ({
 }) => {
   const [isAdding, setIsAdding] = useState(false);
   const [editingCar, setEditingCar] = useState<Car | null>(null);
+
+  const [sortOption, setSortOption] = useState<SortOption>('none');
 
   const handleAddCar = (carData: Omit<Car, 'id'>) => {
     onAddCar(carData);
@@ -48,6 +52,35 @@ export const CarsList: React.FC<CarsListProps> = ({
     setEditingCar(null);
   };
 
+   const handleSortChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setSortOption(e.target.value as SortOption);
+  };
+
+   const getSortedCars = () => {
+    if (sortOption === 'none') return cars;
+    const carsToSort = [...cars];
+    return carsToSort.sort((a, b) => {
+      switch (sortOption) {
+        case 'price-asc':
+          return a.price - b.price;
+        
+        case 'price-desc':
+          return b.price - a.price;
+        
+        case 'year-asc':
+          return a.year - b.year;
+        
+        case 'year-desc':
+          return b.year - a.year;
+        
+        default:
+          return 0;
+      }
+    });
+  };
+
+  const sortedCars = getSortedCars();
+
   if (isLoading) {
     return <Loader />;
   }
@@ -68,6 +101,24 @@ export const CarsList: React.FC<CarsListProps> = ({
     <div className="cars-container">
       <h1>Управление автомобилями</h1>
       <div className="cars-header">
+        <div className="sort-controls">
+          <label htmlFor="sort-select" className="sort-label">
+            Сортировка:
+          </label>
+          <select 
+            id="sort-select"
+            value={sortOption}
+            onChange={handleSortChange}
+            className="sort-select"
+          >
+            <option value="none">Без сортировки</option>
+            <option value="price-asc">Цена по возрастанию</option>
+            <option value="price-desc">Цена по убыванию</option>
+            <option value="year-asc">Год по возрастанию</option>
+            <option value="year-desc">Год по убыванию</option>
+          </select>
+        </div>
+
         <div className="header-actions">
           <button 
             onClick={() => setIsAdding(true)} 
@@ -103,13 +154,13 @@ export const CarsList: React.FC<CarsListProps> = ({
       )}
 
       <div className="cars-grid">
-        {cars.length === 0 ? (
+        {sortedCars.length === 0 ? (
           <div className="empty-state">
             <h3>Нет автомобилей</h3>
             <p>Добавьте первый автомобиль</p>
           </div>
         ) : (
-          cars.map(car => (
+          sortedCars.map(car => (
             <CarCard
               key={car.id}
               car={car}
@@ -120,7 +171,7 @@ export const CarsList: React.FC<CarsListProps> = ({
         )}
       </div>
 
-      {cars.length > 0 && (
+      {sortedCars.length > 0 && (
         <div className="cars-footer">
           <p>Всего автомобилей: {cars.length}</p>
         </div>

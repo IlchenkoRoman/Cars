@@ -1,6 +1,7 @@
 import React from 'react';
-import { CarsList } from '../../../widgets/CarList';
+import  CarsList  from '../../../widgets/CarList';
 import { useCars } from '../../../features/carsList';
+import  Header  from '../../../shared/ui/header/header';
 
 export const CarsPage: React.FC = () => {
   const { 
@@ -15,15 +16,16 @@ export const CarsPage: React.FC = () => {
 
   return (
     <div className="cars-page">
-      <CarsList
-        cars={cars}
-        isLoading={isLoading}
-        error={error}
-        onRefresh={refresh}
-        onAddCar={addCar}
-        onDeleteCar={deleteCar}
-        onUpdateCar={updateCar}
-      />
+        <Header />
+        <CarsList
+            cars={cars}
+            isLoading={isLoading}
+            error={error}
+            onRefresh={refresh}
+            onAddCar={addCar}
+            onDeleteCar={deleteCar}
+            onUpdateCar={updateCar}
+        />
     </div>
   );
 };

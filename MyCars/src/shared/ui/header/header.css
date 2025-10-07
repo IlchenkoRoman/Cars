@@ -68,6 +68,7 @@
 
 .heade-announcement-button {
     background-color: #db001a;
+    color: white;
     border-radius: 6px;
     height: 40px;
     display: flex;
@@ -120,7 +121,7 @@
     }
 }
 
-@media (max-width: 1282px) {
+@media (max-width: 1300px) {
     .heade-announcement-button .full-text {
         display: none;
     }
